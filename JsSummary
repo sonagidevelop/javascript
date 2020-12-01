@@ -58,3 +58,16 @@ while(조건식){
 
 do-while 반복문
 첫 조건식 상관 없이 한 번 무조건 문장 실행, 이후는 동일
+
+16  숫자형
+특이하게 숫자는 그냥 숫자 (int float 같은 게 없다.)
+Infinity , NaN(=not a number) 같은 게 있다.
+
+17  문자형
+별 거 없고 \n을 통해 줄 넘김? 을 할 수 있다.
+
+18  불리언
+
+19  null,undefined
+null : 값의 부재 (그러나 typeof로 확인 했을 때 object로 변환 되는데, 이는 js 이슈다.)
+undefined : 
