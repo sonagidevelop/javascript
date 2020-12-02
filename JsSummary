@@ -70,4 +70,111 @@ Infinity , NaN(=not a number) 같은 게 있다.
 
 19  null,undefined
 null : 값의 부재 (그러나 typeof로 확인 했을 때 object로 변환 되는데, 이는 js 이슈다.)
-undefined : 
+undefined : 변수가 정의 됐지만, 할당이 되지 않음.
+
+20  템플릿 문자열
+문자열에 변수를 포함 시킬 때 좀 더 직관적이고 편하게 사용하기 위한 기능.
+`(억음부호)로 시작하고 끝나며, 변수 부분은 ${변수}로 표시함.
+//const string_introduce = "Hi, My name is " + name + ", " + age + " years old, and I'm living in " + address   -일반적인 문자열
+//const string_introduce = `Hi, My name is ${name}, ${age} years old, and I'm living in ${address}`             -템플릿 문자열
+
+21 산술 연산자
+문자열에 + 사용 가능
+산술 등호 연산 가능 
+% : 나머지 연산자
+** : 거듭제곱 연산자
++/- 단항 양/음수
+++/-- 증감 연산자
+
+22 비교 연산자
+비교 연산자
+    -일치 연산자 : 동등(==), 부등(!=) (동등,부등은 자료형을 바꿔서 비교) , 일치(===), 불일치(!==) (자료형까지 기준에 넣어서 비교)
+    -관계 연산자 : >,<,>=,<=
+스트링 비교 연산 가능
+
+23 논리 연산자
+and && , or || , not !
+무조건 False인 것들 : false , 0 , -0, "" , Nan ,null,undefined
+
+24  삼항 연산자
+조건문 ? 표현문1 : 표현문2
+          true     false
+          
+25  비트 연산자
+비트 연산자
+    -비트 논리 연산자 &, ~ , | , ^
+    -비트 이동 연산자 << , >> , >>>
+
+어렵다.
+not 비트 연사자는 잘 이해가 가지 않는다.
+이런게 있다 정도만 일단 이해하자.
+
+26  자료형 변환
+5+"1" 은 51이 된다. string을 우선 처리하기 때문이다.
+var num= +str; 이런 식으로 스트링을 숫자형 자료로 만들어 버릴 수 있다.
+
+27  배열
+배열의 길이 = 요소의 개수 (ex.console.log(arr.length);)
+인덱스 = 0부터 시작, []로 지정
+
+28  객체
+객체 = 값들을 그룹으로 묶은 데이터 모음.
+{key:value} => properties(속성)
+
+JSON : 자바스크립트 객체와 매우 유사한 구조를 지닌 데이터 교환 형식.
+'객체 자체는 알맹이가 얼마 없는 것 같다. 그냥 데이터 묶음인 것 같다.'
+
+29 객체2
+var family = {
+    'address' : 'Seoul',
+    members : {} ,
+    addFamily : function(age, name , role) {
+        this.members[role] = {
+            age: age,
+            name : name
+        };
+    },
+    getHeadCount : function() {
+        return  Object.keys(this.members).length;
+    }
+};
+
+family.addFamily(30, 'chloe', 'aunt');
+family.addFamily(3, 'lyn', 'niece');
+family.addFamily(10, 'dangdangi' , 'dog');
+
+var printMembers = function() {
+    var members = family.members;
+    for (role in members) {
+        console.log('role =>' + role + ', name = >' + members[role].name + ', age => ' +members[role].age);
+    }
+};
+
+printMembers();      //여기까지는 그냥 3개의 속성을 넣고 프린트 하는 것
+
+var members = family.members;
+members['nephew'] = {age: 3, name:'hyun'};   //[]를 이용해서 추가
+members.niece = {age:5,name:'lyn'};          //. 이용해서 수정 ([]이용해서 수정 가능)
+delete members.aunt;                         //. 이용해서 삭제
+delete members['dog'];                       //[] 이용해서 삭제
+printMembers();
+
+// family라는 객체 안에 이렇게 다양한 종류의 데이터가 들어 가 있다.{address: "Seoul", members: {…}, addFamily: ƒ, getHeadCount: ƒ} 
+
+30  단축 속성명
+var로 미리 다 지정 해 놓고 한번에 객체에 넣는다.
+    ex. var family = {address, members, addFamily, getHeadcount};
+    
+31  속성 계산명
+동적으로 객체 속성 생성
+예시) var obj={};
+      for (var i = 0; i<4; i++){
+        obj["key"+i]=i;
+        }
+대괄호 안이 키의 이름을 만드는 내용이다.
+
+32  비구조화 할당
+-객체 비구조화 할당
+    중괄호 이용, 객체 내용을 이용해서 새로운 변수와 값 할당을 빠르게 한다.
+-배열 비구조화 할당
+    대괄호 이용, var[]=xxxxx  <= 여기 뒷부분에 뭐가 오는지를 잘 봐야 할 것 같다.
