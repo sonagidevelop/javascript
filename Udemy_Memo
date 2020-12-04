@@ -1,0 +1,97 @@
+section 1
+
+lecture1
+
+lecture2
+
+lecture3
+
+lecture4
+
+section2
+
+lecture1 Hello Wrold!
+
+lecture2 A Breif Introduction to JavaScript
+
+lecture3 Linking a JavaScript File
+
+lecture4 Values and Variables
+
+lecture5 Data Types
+
+7 Data Types : number, String , boolean, undefined, null(object아니야.버그야) , symbol, bigint
+
+lecture6 let, const and var
+
+변수를 다시 할당하는 것 = reassigning, mutating
+const는 immutable variable
+그래서 빈 값을 할당 할 수 없음.
+
+let은 block scoped.
+var은 function scoped.
+
+operator =연산자
+operator precedence =연산자 우선순위
+//https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/%EC%97%B0%EC%82
+%B0%EC%9E%90_%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84
+assignment operator: 할당 연산자
+
+
+lecture7 Basic Operators
+
+
+lecture8 Operator Precedence
+
+lecture9 Coding Challenge#1
+
+    let markMass = 95;
+    let markHeight = 1.88;
+    let johnMass = 85;
+    let johnHeight = 1.76;
+
+    let markBMI = markMass / markHeight ** 2;
+    let johnBMI = johnMass / johnHeight ** 2;
+
+    let markHigherBMI = (markBMI > johnBMI);
+    console.log(markHigherBMI);
+    //data2로 넣은 값임.
+    
+lecture10 strings and template literals
+`억음쇠 backtick, grave accent 쓰면 \n 안 써도 개행 가능.
+
+lecture11 Taking Decisions: if/else Statements
+
+
+    //Driver's license approval system
+    let userAge = 17;
+    let licenseAge = 20;
+    let differenceAge = userAge - licenseAge;
+
+    if (differenceAge >= 0) {
+        console.log("You can try driver's license!")
+    } else {
+        console.log(`you have ${differenceAge * -1}years left for driver's license.`)
+    }
+   
+lecture12 Coding Challenge#2
+
+
+    소수점 버림 했으면 더 좋았겠다. (해버렸지뭐야)
+      let markMass = 95;
+      let markHeight = 1.88;
+      let johnMass = 85;
+      let johnHeight = 1.76;
+
+      let markBMI = markMass / markHeight ** 2;
+      let johnBMI = johnMass / johnHeight ** 2;
+      let markBMIFixed = markBMI.toFixed(1);
+      let johnBMIFixed = johnBMI.toFixed(1);
+
+      let markHigherBMI = (markBMI > johnBMI);
+
+      if (markHigherBMI) {
+          console.log(`Mark's BMI(${markBMIFixed}) is higher than John's(${johnBMIFixed})!!`)
+      } else {
+          console.log(`John's BMI(${johnBMIFixed}) is higher than Mark's(${markBMIFixed})!!`)
+      }
