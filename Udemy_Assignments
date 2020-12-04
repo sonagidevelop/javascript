@@ -1,0 +1,8 @@
+1
+let country = "Republic of Korea";
+let continent = "South-east Asia";
+let population = "50m people"
+
+console.log(country);
+console.log(continent);
+console.log(population);
