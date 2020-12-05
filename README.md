@@ -6,6 +6,6 @@
   <li>VSCode 세팅하기. Autosave, Format on Save, Font Size</li>
   <li>강사 깃헙 드가서 파일 다운받기. <a href="https://github.com/jonasschmedtmann/complete-javascript-course">링크</a> </li>
   <li>압축 풀고 VSCode에 넣기</li>
-  <li>script태그 <pre><script src="script.js"></pre></script></li>
+  <li>script태그 <pre><script src="script.js"></script></pre></li>
 </ol>
   
