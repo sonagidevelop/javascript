@@ -59,7 +59,7 @@ if (differenceAge >= 0) {
     console.log(`you have ${differenceAge * -1}years left for driver's license.`)
 }
 */
-
+/*
 //Coding Challenge #2
 let markMass = 95;
 let markHeight = 1.88;
@@ -78,4 +78,145 @@ if (markHigherBMI) {
 } else {
     console.log(`John's BMI(${johnBMIFixed}) is higher than Mark's(${markBMIFixed})!!`)
 }
+*/
+/*
+'use strict';
 
+let hasDriversLicense = false;
+const passTest = true;
+
+if (passTest) hasDriversLicense = true;
+if (hasDriversLicense) console.log("i can drive:D");
+*/
+
+/*
+function logger() {
+    console.log("My name is Jonas");
+}
+
+
+
+function fruitProcessor(apples, oranges) {
+    console.log(apples, oranges);
+    const juice = `Juice with ${apples} apples and ${oranges} oranges.`;
+    return juice
+}
+
+let juiceCount = fruitProcessor(5, 0);
+console.log(juiceCount);
+
+const num = Number('23');
+console.log(typeof '23');
+console.log(typeof Number('23'));
+*/
+/*
+function calcAge1(birthYear) {
+    return 2037 - birthYear;
+}
+
+const age1 = calcAge1(1991);
+console.log(age1);
+
+const calcAge2 = function (birthYear) {
+    return 2037 - birthYear;
+}
+const age2 = calcAge2(1991);
+console.log(age2);
+*/
+/*
+const calcAge3 = birthYear => 2037 - birthYear;
+const age3 = calcAge3(1991);
+console.log(age3);
+*/
+/*const yearsuntilRetire = (birthYear, firstName) => {
+    const age = 2020 - birthYear
+    const retire = 65 - age;
+    return `${firstName} retires in ${retire}years.`;
+}
+
+console.log(yearsuntilRetire(1998, 'jin'));
+*/
+/*
+function cutFruitPieces(fruit) {
+    return fruit * 4;
+}
+
+
+
+function fruitProcessor(apples, oranges) {
+    const applePieces = cutFruitPieces(apples);
+    const orangePieces = cutFruitPieces(oranges);
+
+    console.log(apples, oranges);
+    const juice = `Juice with ${applePieces} apples and ${orangePieces} oranges.`;
+    return juice
+}
+
+console.log(fruitProcessor(2, 3));
+*/
+
+//Coding Challenge 2-1
+/*
+const calcAverage = (sc1, sc2, sc3) => (sc1 + sc2 + sc3) / 3;
+
+const dolphinScore = calcAverage(85, 54, 41);
+const koalaScore = calcAverage(23, 34, 27);
+
+function checkWinner(avgDolphins, avgKoalas) {
+    let winner;
+    let winnerAvg;
+    let loserAvg;
+    if (avgDolphins >= avgKoalas * 2) {
+        winner = "dolphins";
+        winnerAvg = avgDolphins;
+        loserAvg = avgKoalas;
+        console.log(`${winner} win (${winnerAvg} vs. ${loserAvg})`);
+
+    } else if (avgKoalas >= avgDolphins * 2) {
+        winner = "koalas";
+        winnerAvg = avgKoalas;
+        loserAvg = avgDolphins;
+        console.log(`${winner} win (${winnerAvg} vs. ${loserAvg})`);
+    } else {
+        console.log("nobody won!");
+    }
+
+}
+
+checkWinner(dolphinScore, koalaScore);
+*/
+
+const friends = ['Michael', 'Steven', 'Peter'];
+
+friends[2] = 'Jay';
+console.log(friends);
+
+const jonas = ['schmedtmann', 2037 - 1991, 'teacher', friends];
+console.log(jonas);
+
+const calcAge = function (birthYear) {
+    return 2037 - birthYear;
+}
+
+const years = [1990, 1967, 2002, 2010, 2018];
+console.log(years);
+
+
+const age1 = calcAge(years[0]);
+console.log(age1);
+
+const age2 = calcAge(years[1]);
+console.log(age2);
+
+const age3 = calcAge(years[4]);
+console.log(age3);
+
+const ages = [calcAge(years[0]), calcAge(years[1]), calcAge(years[4])];
+console.log(ages);
+
+const newYears = [];
+for (i = 0; i < years.length; i++) {
+    newYears[i] = calcAge(years[i]);
+}
+
+console.log(newYears);
