@@ -153,7 +153,7 @@ lecture28   The Conditional Operator (ternary) 삼항연산자
     
 lecture29 Coding Challenge #4
     50 <= bill <= 300 ? tipRatio = 0.15 : tipRatio = 0.2; 
-    안되네.
+    안되네./tmp/guest-d4tpj6/Desktop/complete-javascript-course-master/01-Fundamentals-Part-1/starter/index.html
     
             let tipRatio;
             let bill = 430;
@@ -165,3 +165,95 @@ lecture29 Coding Challenge #4
             finalValue = tip + bill;
 
             console.log(`The bill was ${bill}, the tip was ${tip}, and the total value was ${finalValue}.`)
+section3
+
+01 strict mode
+'use strict'; 
+오직 첫째줄에 혼자.
+다양한 버그들을 실행에 문제가 없더라도 알려주면서 에러를 띄움.
+
+02 functions
+03 function declaration vs expression
+with declaration, you can use function before defining it.
+
+04 Arrow function
+        const calcAge3 = birthYear => 2037 - birthYear;
+        const age3 = calcAge3(1991);
+        console.log(age3);
+
+        const yearsuntilRetire = birthYear => {
+            const age = 2020 - birthYear
+            const retire = 65 - age;
+            return retire;
+        }
+
+        console.log(yearsuntilRetire(1998));
+        
+       
+2-1 coding challenge
+        const calcAverage = (sc1, sc2, sc3) => (sc1 + sc2 + sc3) / 3;
+
+        const avgDolphins = calcAverage(85, 54, 41);
+        const avgKoalas = calcAverage(23, 34, 27);
+
+        function checkWinner(team1, team2) {
+            let winner;
+            let winnerAvg;
+            let loserAvg;
+            if (team1 >= team2 * 2) {
+                winner = "dolphins";
+                winnerAvg = team1;
+                loserAvg = team2;
+                console.log(`${winner} win (${winnerAvg} vs. ${loserAvg})`);
+
+            } else if (team2 >= team1 * 2) {
+                winner = "koalas";
+                winnerAvg = team2;
+                loserAvg = team1;
+                console.log(`${winner} win (${winnerAvg} vs. ${loserAvg})`);
+            } else {
+                console.log("nobody won!");
+            }
+
+        }
+
+        checkWinner(avgDolphins, avgKoalas);
+        //생각해보니까 이거 조건을 안지켰네.
+        
+        
+            const calcAverage = (sc1, sc2, sc3) => (sc1 + sc2 + sc3) / 3;
+
+            const dolphinScore = calcAverage(85, 54, 41);
+            const koalaScore = calcAverage(23, 34, 27);
+
+            function checkWinner(avgDolphins, avgKoalas) {
+                let winner;
+                let winnerAvg;
+                let loserAvg;
+                if (avgDolphins >= avgKoalas * 2) {
+                    winner = "dolphins";
+                    winnerAvg = avgDolphins;
+                    loserAvg = avgKoalas;
+                    console.log(`${winner} win (${winnerAvg} vs. ${loserAvg})`);
+
+                } else if (avgKoalas >= avgDolphins * 2) {
+                    winner = "koalas";
+                    winnerAvg = avgKoalas;
+                    loserAvg = avgDolphins;
+                    console.log(`${winner} win (${winnerAvg} vs. ${loserAvg})`);
+                } else {
+                    console.log("nobody won!");
+                }
+
+            }
+
+            checkWinner(dolphinScore, koalaScore);
+            
+            //조건 맞춰서 수정
+            
+            
+Array
+console.log(friends[freinds.length - 1]); 마지막 거 출력하기
+배열에 서로 다른 타입의 값들이 들어 갈 수 있어용.
+배열 만드는 법 1.literal syntax 대괄호 이용 2.new Array() 함수를 
+
