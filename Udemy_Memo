@@ -361,5 +361,49 @@ loop in loop
         //루프 속 루프 나름 재밌네.
         
         
+while
+
+while (rep <= 10) {
+    console.log(`lifting weights repetition ${rep}`);
+    rep++;
+}
+while에서는 조건 말고는 외부적으로 정의해줘야한다.
+
+
+Coding Challenge 2-4
+        const bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+        const tips = [];
+        const totals = [];
+        function calcTip(billValue) {
+            billValue >= 50 && billValue <= 300 ? this.tip = billValue * 0.15 : this.tip = billValue * 0.2;
+            return tip;
+        }
+        for (i = 0; i < bills.length; i++) {
+            tips.push(calcTip(bills[i]));
+        }
+
+        for (i = 0; i < bills.length; i++) {
+            totals.push(bills[i] + tips[i]);
+        }
+        console.log(totals);
+
+        function calcAverage(arr) {
+            let addField = 0;
+            for (i = 0; i < arr.length; i++) {
+                addField = addField + arr[i];
+
+            }
+            this.average = addField / arr.length;
+            return average
+        }
+
+        const billAverage = calcAverage(bills);
+        console.log(billAverage);
+        const totalAverage = calcAverage(totals);
+        console.log(totalAverage); 
         
+        //나는 tips와 totals에 push 할 때 for문을 2번 썼는데, 강사는 tip=calcTip(bills[i])를 미리 만들어 놓고
+        //for 문 한 개에 둘 다 처리해 버렸다. 단축에 용이하겠다.
+        //두 번째로 평균 계산 할 때 a=a+b[i]이런거 a+=b[i]이렇게 쓸 수 있다.
+        //또 this를 쓸 때 확신없이 그냥 써 봤다.
         
