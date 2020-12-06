@@ -257,3 +257,109 @@ console.log(friends[freinds.length - 1]); 마지막 거 출력하기
 배열에 서로 다른 타입의 값들이 들어 갈 수 있어용.
 배열 만드는 법 1.literal syntax 대괄호 이용 2.new Array() 함수를 
 
+method of array
+method=build in functions
+push 메소드는 배열의 길이를 반환한다.
+없는 것의 indexOf를 하면 -1이 나옴.
+push,unshift,pop,shift,indexOf,includes(type coercion 하지 않음) = 배운 메소드들.
+
+
+2-2 Coding Challenge
+        const bills = [125, 555, 44];
+
+        function calcTip(billValue) {
+            let tipValue;
+            if (billValue >= 50 && billValue <= 300) {
+                tipValue = billValue * 0.15;
+                return tipValue;
+            } else {
+                tipValue = billValue * 0.2;
+                return tipValue;
+            }
+        }
+
+        let tips = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[2])];
+        let total = [bills[0] + tips[0], bills[1] + tips[1], bills[2] + tips[2]];
+        console.log(tips);
+        console.log(total);
+        
+        // 내가 만든 함수는 기본에 충실.
+        //const calcTip = function(billValue){
+             return billValue >= 50 && billValue <= 300? bill *0.15 : bill* 0.2;
+            }
+        //강사가 만든 함수는 삼항 연산자 사용. 이렇게 하고 싶었는데 기억이 잘 안났었다.
+        //인덱스를 일일히 넣지 않고 반복문을 사용하고 싶었는데 배우면 써먹어 봐야 겠다.
+       
+       
+Objects
+        function loggingInterested() {
+            const interestedIn = prompt('What do you want to know about jin? choose between firstName,...');
+            if (jin[interestedIn]) {
+                console.log(jin[interestedIn]);
+            } else {
+                console.log("wrong input!");
+            }
+        }
+
+        loggingInterested();
+        //관심사를 로깅하는 코드
+
+coding challenge 2-3
+
+        const markProfile = {
+            firstName: "Mark",
+            lastName: "Miller",
+            mass: 78,
+            height: 1.69,
+            //calcBMI: function () {
+            //   return (this.mass / this.height ** 2);
+            // }
+            calcBMI: function(){
+                this.bmi = this.mass/this.height**2;
+                return this.bmi;
+            }
+        };
+        const johnProfile = {
+            firstName: "John",
+            lastName: "Smith",
+            mass: 92,
+            height: 1.95,
+            //calcBMI: function () {
+            //    return (this.mass / this.height ** 2);
+            //}
+            calcBMI: function(){
+                this.bmi = this.mass/this.height**2;
+                return this.bmi;
+            }
+        };
+
+        if (markProfile.calcBMI() > johnProfile.calcBMI()) {
+            console.log(`${markProfile.firstName}'s BMI(${markProfile.calcBMI()}) is higher than ${johnProfile.firstName}'s(${johnProfile.calcBMI()})!`);
+        } else {
+            console.log(`${johnProfile.firstName}'s BMI(${johnProfile.calcBMI()}) is higher than ${markProfile.firstName}'s(${markProfile.calcBMI()})!`);
+        }
+
+        //내가 작성 한 코드는 bmi라는 property를 만들지 않는다.
+        //수정하면 빈 곳에서 markProfile.calcBMI(); 를 하면 bmi property가 생성된다.
+        
+        
+loop in loop
+        const typeLift = ['a', 'b', 'c'];
+        for (i = 0; i < typeLift.length; i++) {
+            for (j = 0; j < 5; j++) {
+                console.log(`${typeLift[i]}를 ${j + 1}번 했음.`);
+            }
+        }
+
+        for (i = 0; i < typeLift.length; i++) {
+            console.log(`${typeLift[i]}운동중--------------------------------`)
+
+            for (j = 0; j < 5; j++) {
+                console.log(`${j + 1}번 했음.`);
+            }
+        }
+        //루프 속 루프 나름 재밌네.
+        
+        
+        
+        
