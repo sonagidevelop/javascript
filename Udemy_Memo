@@ -407,3 +407,6 @@ Coding Challenge 2-4
         //두 번째로 평균 계산 할 때 a=a+b[i]이런거 a+=b[i]이렇게 쓸 수 있다.
         //또 this를 쓸 때 확신없이 그냥 써 봤다.
         
+Developer Skills & Editor Setup
+아쉽게도 리눅스컴에서는 extension이 안 깔려서 live server를 쓸 수가 없다.
+그리고 npm install도 안된다.. ㅠㅠ
