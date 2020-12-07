@@ -1,0 +1,14 @@
+<DOM>
+dom이란 Document Object Model
+Tree형태
+document는 special object
+어떤 요소라도 node를 가지고 있다.
+
+-.querySelector()
+html문서에서 요소 선택
+-.textContent
+요소에서 텍스트만 받아옴 .textContent = 15;라고 하면 그 곳에 15를 할당함.
+-.value
+요소에서 값을 받아옴(input 부분이 초기엔 empty임.) .value=15;라고 하면 15를 할당
+-.addEventListener('event',function())
+이벤트 발생 시 실행
