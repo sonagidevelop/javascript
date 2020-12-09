@@ -40,3 +40,61 @@ const z = 3;
 
 console.log(z === window.z);
 //variables declared with var create a property on window.
+
+
+///////////////////////////////// this 키워드
+THIS KEYWORD/VARIABLE
+:special variable that is created for every execution context(every function).Takes the value of (points to)
+the "owner" of the function in which the this keyword is used.
+execution context(모든 함수)에게 생성되는 특별한 변수. this키워드가 쓰이는 함수의 "주인"의 값을 가진다(가리킨다).
+
+this is not static. It depends on how the function is called, and its value is only assigned when the function 
+is actually called.
+이건 정적이지 않다. 이건 함수가 어떻게 호출되느냐에 의존하며, 이것의 값은 오직 실제로 호출됐을 때만 할당된다.
+
+**4 Ways of calling functions
+    -method:this=<object that is calling the method>메소드를 호출하는 함수가 this이다.
+    -simple call:this=undefined(in strict mode. else: window)
+    -arrow functions: this =<this of surrounding function> (lexical this)부모 함수의 this가 this이다.
+    -Event Listener: this=<DOM element that the handler is attatched to>핸들러가 붙어있는 dom 요소가 this이다.
+    -new,call,apply,bind도 있는데 나중에 배움.
+    
+this does not point to the function itself, and also not the variable environment!
+this는 함수 자체를 가리키는 것이아니며, 변수 환경을 가리키는 것도 아니다.
+
+
+
+
+
+const calcAge = function (birtyYear) {
+    console.log(2020 - birtyYear);
+    console.log(this);
+}
+
+calcAge(1998);
+
+const calcAgeArrow = birtyYear => {
+    console.log(2020 - birtyYear);
+    console.log(this);
+}
+
+calcAgeArrow(1990);
+
+const jonas = {
+    year: 1991,
+    calcAge: function () {  //method에서의 this는 attatching object다.
+        console.log(this);
+        console.log(2037 - this.year);
+    }
+};
+jonas.calcAge();
+
+const matilda = {
+    year: 2017,
+};
+
+matilda.calcAge = jonas.calcAge;  //method borrowing
+matilda.calcAge();
+
+const f = jonas.calcAge; //이렇게하면 simple function call임.
+f();
