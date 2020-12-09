@@ -1,0 +1,5 @@
+//scoping
+음...이해한 것과 크게 다르지는 않았는데
+reassigning outer scope's variable 이 부분이 신기했다.
+output을 그냥 declare 하는거랑 const놓고 declare하는거랑 결과가 아예 달랐다.
+const놓고 declare하면 같은 이름이지만 아예 다른 변수인 것이 신기했다.
