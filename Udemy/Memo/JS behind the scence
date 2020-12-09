@@ -1,5 +1,42 @@
-//scoping
+////////////////////scoping
 음...이해한 것과 크게 다르지는 않았는데
 reassigning outer scope's variable 이 부분이 신기했다.
 output을 그냥 declare 하는거랑 const놓고 declare하는거랑 결과가 아예 달랐다.
 const놓고 declare하면 같은 이름이지만 아예 다른 변수인 것이 신기했다.
+
+////////////////////호이스팅
+var me = 'jinhyeok';  //undefined로 hoist된다.
+let job = 'soldier';   //ReferenceError뜬다.
+const year = 1998;
+
+//functions
+// console.log(addDecl(2, 3));
+// console.log(addExpr(2, 3)); //ReferenceError 인데 var로 놓고 하면 함수가 아니라고 한다.
+// console.log(addArrow(2, 3)); // 이유는 hoisted면 undefined이기 때문이다
+
+// function addDecl(a, b) {
+//     return a + b;
+// }
+
+// const addExpr = function (a, b) { //ReferenceError
+//     return a + b;
+// }
+
+// var addArrow = (a, b) => a + b; //TypeError
+
+//examples
+
+if (!numProducts) deleteShoppingCart(); //hoisting하면 undefined라서 falsy value임.
+
+var numProducts = 10;
+
+function deleteShoppingCart() {
+    console.log('all products deleted');
+}
+
+var x = 1;
+let y = 2;
+const z = 3;
+
+console.log(z === window.z);
+//variables declared with var create a property on window.
