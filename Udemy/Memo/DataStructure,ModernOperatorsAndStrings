@@ -1,0 +1,56 @@
+///////////Destructuring Arrays
+Destructuring 이란 구조 분해 할당.
+
+여러 개의 변수에 서로 다른 값을 동시에 할당 할 때 우리는 destructuring을 쓸 수 있다.
+스와핑을 할 때 임시 변수를 사용하는 경우가 일반적인데,
+[a,b]=[b,a]이런 식으로 쉽고 간단하게 임시 변수 없이 할 수 있다.
+물론 함수의 return 값 여러개를 동시에 할당 받을 수 도 있다.
+또한 array 속의 array 즉 nested 일 지라도 가능하다.
+디폴트 값을 정해서 할당 받지 못한 값이 undefined 되는 것도 방지 할 수 있다.
+
+          'use strict';
+
+          const restaurant = {
+            name: 'Classico Italiano',
+            location: 'Via Angelo Tavanti 23, Firenze, Italy',
+            categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+            starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+            mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+
+            order: function (starterIndex, mainIndex) {
+              return [this.starterMenu[starterIndex],
+              this.mainMenu[mainIndex]];
+            }
+          };
+
+          const arr = [2, 3, 4];
+          const a = arr[0];
+          const b = arr[1];
+          const c = arr[2];
+
+          const [x, y, z] = arr; //new
+          console.log(x, y, z);
+
+          let [main, , secondary] = restaurant.categories;  //new
+          console.log(main, secondary);
+
+          // const temp = main;             //manual swaping
+          // main = secondary;
+          // secondary = temp;
+          // console.log(main, secondary);
+
+          [main, secondary] = [secondary, main];  //new
+          console.log(main, secondary);
+
+          const [starter, mainCourse] = restaurant.order(2, 0);
+          console.log(starter, mainCourse);
+
+          const nested = [2, 4, [5, 6]];
+          // const [i, , j] = nested;
+          // console.log(i, j)
+          const [i, , [j, k]] = nested;
+          console.log(i, j, k);
+
+          // Defualt values
+          const [p = 1, q = 1, r = 1] = [8, 9];
+          console.log(p, q, r);
