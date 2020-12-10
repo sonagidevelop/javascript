@@ -98,3 +98,73 @@ matilda.calcAge();
 
 const f = jonas.calcAge; //이렇게하면 simple function call임.
 f();
+
+
+////////////////////////regular functions vs arrow functions
+this가 어떻게 달라지는지 3가지 경우를 복습.
+1.메소드에서는 호출한 객체가 this.
+2.화살표 함수에서는 부모 요소의 this를 받음.
+3.일반 호출시에는 undefined.
+
+2번을 이용해서 객체 안의 메소드 안의 함수를 작성할 때, 화살표 함수를 이용해서 메소드의 this를 상속받을 수 있다.
+"아 this를 생각할 땐 호출될 때를 생각하면 되겠다."
+
+++++++ arguments keyword.
+            const addExpr = function (a, b) {
+                console.log(arguments);
+                return a + b;
+            };
+            addExpr(2, 5);
+            addExpr(2, 5, 8, 12);
+
+            var addArrow = (a, b) => {
+                console.log(arguments);
+                return a + b;     //1줄 이상의 코드를 작성하면 return을 explicitly.
+            }
+
+            addArrow(2, 5, 8);
+화살표 함수에서는 arguments를 받을 수 없다.
+
+//////////////////////////Primivite Types vs Reference Types
+primitive types의 메모리 사용 방식
+변수가 메모리 주소, 주소에 따른 값을 가짐.
+어떤 변수에 새로 값을 할당 할 경우 새로운 메모리 주소 할당.
+콜 스택 안에서만 과정이 이루어짐.
+
+reference types의 메모리 사용 방식
+변수는 주소를 가지고 있고 주소의 값으로 heap data 안에 있는 data의 주소를 가짐.
+따라서 변수에 새로운 값을 할당하면 heap data의 값이 변경되고, call stack 안에서 참조하는 주소는 변하지 않음.
+그래서 const내부의 값을 변경 할 수 있는 것임.
+        //Primitive Types
+        let lastName = "Williams";
+        let oldLastName = lastName;
+        lastName = "Davis"; //새로운 메모리 생성
+        console.log(lastName, oldLastName);
+
+        //Reference Types
+        const jessica = {
+            firstName: "Jessica",
+            lastName: 'Williams',
+            age: 27,
+        }
+
+        const marriedJessica = jessica;
+        marriedJessica.lastName = "Davis";
+        console.log("Before marriage:", jessica);
+        console.log('After marriage:', marriedJessica);
+
+        //Copying objects
+        const jessica2 = {
+            firstName: "Jessica",
+            lastName: 'Williams',
+            age: 27,
+            family: ['Alice', 'Bob'],
+        }
+
+        const jessicaCopy = Object.assign({}, jessica2);  //object copying method (shallow)
+        jessicaCopy.lastName = "Davis";
+
+        jessicaCopy.family.push('Mary');
+        jessicaCopy.family.push('John');
+        console.log("Before marriage:", jessica2);
+        console.log('After marriage:', jessicaCopy);
