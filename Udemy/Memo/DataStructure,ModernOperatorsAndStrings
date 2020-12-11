@@ -298,3 +298,11 @@ ES2020 내용이고, undefined나 null을 찾는다.
                     console.log(game.team1);
 
 아직 헷갈린다. array와 object destructuring이랑 spread, rest 어렵다.
+///////////////for of loop
+파이썬처럼 for 문을 쓰는거라고 생각된다.
+//////////////////////////es6 enhanced object literals
+1.밖의 객체를 property로 넣고 싶을 때, 그냥 객체 이름만 넣으면 된다.
+2.함수인 property를 만들 때, order(a,b){~  이런식으로 호출하는 것 마냥 써도 된다. 단 , 를 빼먹지 않아야 할 것.
+3.property name을 computed form으로 설정 할 수 있다.
+
+//////////////////////////////////optional chaning은 es버전이 높아서 싸지방에서 안된다.
