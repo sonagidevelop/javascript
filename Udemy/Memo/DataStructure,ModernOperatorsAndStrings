@@ -228,3 +228,73 @@ ES2020 내용이고, undefined나 null을 찾는다.
                     // };
 
                     // restaurant.orderPizza && restaurant.orderPizza("mushrooms", "spinach");
+                    
+                    
+//coding challenge
+'use strict';
+
+                    //coding challenge
+                    const game = {
+                      team1: 'Bayern Munich',
+                      team2: 'Borrussia Dortmund',
+                      players: [
+                        [
+                          'Neuer',
+                          'Pavard',
+                          'Martinez',
+                          'Alaba',
+                          'Davies',
+                          'Kimmich',
+                          'Goretzka',
+                          'Coman',
+                          'Muller',
+                          'Gnarby',
+                          'Lewandowski',
+                        ],
+                        [
+                          'Burki',
+                          'Schulz',
+                          'Hummels',
+                          'Akanji',
+                          'Hakimi',
+                          'Weigl',
+                          'Witsel',
+                          'Hazard',
+                          'Brandt',
+                          'Sancho',
+                          'Gotze',
+                        ],
+                      ],
+                      score: '4:0',
+                      scored: ['Lewandowski', 'Gnarby', 'Lewandowski',
+                        'Hummels'],
+                      date: 'Nov 9th, 2037',
+                      odds: {
+                        team1: 1.33,
+                        x: 3.25,
+                        team2: 6.5,
+                      },
+                    };
+                    const [players1, players2] = [...game.players];  //아래의 것과 결과가 같다.
+                    const [players3, players4] = game.players;
+                    console.log(players1, players2)
+                    console.log(players3, players4);
+                    const [gk, ...fieldPlayers] = players1;
+                    const allPlayers = [...players1, ...players2];
+                    const players1Final = [...players1, "Thiago", "Coutinho", "Perisic"];
+                    const { team1: team1, x: draw, team2: team2 } = game.odds;  //x랑 draw 순서. 원본:새변수명
+                    const printGoals = function (...scoredPlayers) {
+
+                      let i = 0;
+                      for (i = 0; i < scoredPlayers.length; i++) {
+                        console.log(scoredPlayers[i]);
+                      }
+                      console.log(scoredPlayers.length);
+
+                    }
+                    printGoals('Lewandowski', 'Gnarby', 'Lewandowski',
+                      'Hummels');
+                    console.log(team1, draw, team2);
+                    console.log(game.team1);
+
+아직 헷갈린다. array와 object destructuring이랑 spread, rest 어렵다.
