@@ -306,3 +306,21 @@ ES2020 내용이고, undefined나 null을 찾는다.
 3.property name을 computed form으로 설정 할 수 있다.
 
 //////////////////////////////////optional chaning은 es버전이 높아서 싸지방에서 안된다.
+
+/////////////////////////////Sets
+기본 식은
+const 이름 = new Set(iterable삽입)
+ordersSet.size = element 개수(length랑 다르다)
+.has('str') 있는지 없는지
+.add('str')
+.delete('str')
+.clear()
+
+set내의 data를 retrieve하는 방법은 없다. (있냐 없냐만 체크 가능.)
+왜냐면 그게필요하면 그냥 array를 썼을 것이기 때문이다.
+set은 array에서 중복을 제거하고 싶을 때 쓰면 된다.
+
+                    staffUnique = [...new Set(staff)];//array 형태
+                    console.log(staffUnique);
+                    console.log(typeof staffUnique);
+
