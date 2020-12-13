@@ -1,47 +1,261 @@
 'use strict';
 
+//cc#4
+
+document.body.append(document.createElement('textarea'));
+document.body.append(document.createElement('button'));
+
+const camelCasing = function (text) {
+  //0.줄 별로 나누기
+  const lineSplited = text.split('\n');
+  const newArr = [];
+  for (const line of lineSplited) {
+    const newLine = line.toLowerCase().replace('_', ' ');
+    const spaceIndex = newLine.indexOf(' ');
+    newArr.push(newLine[0].toLowerCase() + newLine.slice(1, spaceIndex) +
+      newLine[spaceIndex + 1].toUpperCase() + newLine.slice(spaceIndex + 2))
+
+  }
+  return newArr;
+}
+
+
+document.querySelector('button').addEventListener('click', function () {
+  const inputText = document.querySelector('textarea').value;
+  const camelCasedInput = camelCasing(inputText);
+
+  let i = 1;
+  for (const output of camelCasedInput) {
+    console.log(output.padEnd(20, ' ') + '*'.repeat(i))
+    i++
+  }
+})
+
+
 // //coding challenge
-const game = {
-  team1: 'Bayern Munich',
-  team2: 'Borrussia Dortmund',
-  players: [
-    [
-      'Neuer',
-      'Pavard',
-      'Martinez',
-      'Alaba',
-      'Davies',
-      'Kimmich',
-      'Goretzka',
-      'Coman',
-      'Muller',
-      'Gnarby',
-      'Lewandowski',
-    ],
-    [
-      'Burki',
-      'Schulz',
-      'Hummels',
-      'Akanji',
-      'Hakimi',
-      'Weigl',
-      'Witsel',
-      'Hazard',
-      'Brandt',
-      'Sancho',
-      'Gotze',
-    ],
-  ],
-  score: '4:0',
-  scored: ['Lewandowski', 'Gnarby', 'Lewandowski',
-    'Hummels'],
-  date: 'Nov 9th, 2037',
-  odds: {
-    team1: 1.33,
-    x: 3.25,
-    team2: 6.5,
-  },
-};
+// const game = {
+//   team1: 'Bayern Munich',
+//   team2: 'Borrussia Dortmund',
+//   players: [
+//     [
+//       'Neuer',
+//       'Pavard',
+//       'Martinez',
+//       'Alaba',
+//       'Davies',
+//       'Kimmich',
+//       'Goretzka',
+//       'Coman',
+//       'Muller',
+//       'Gnarby',
+//       'Lewandowski',
+//     ],
+//     [
+//       'Burki',
+//       'Schulz',
+//       'Hummels',
+//       'Akanji',
+//       'Hakimi',
+//       'Weigl',
+//       'Witsel',
+//       'Hazard',
+//       'Brandt',
+//       'Sancho',
+//       'Gotze',
+//     ],
+//   ],
+//   score: '4:0',
+//   scored: ['Lewandowski', 'Gnarby', 'Lewandowski',
+//     'Hummels'],
+//   date: 'Nov 9th, 2037',
+//   odds: {
+//     team1: 1.33,
+//     x: 3.25,
+//     team2: 6.5,
+//   },
+// };
+
+// const gameEvents = new Map([
+//   [17, '⚽ GOAL'],
+//   [36, '🔁 Substitution'],
+//   [47, '⚽ GOAL'],
+//   [61, '🔁 Substitution'],
+//   [64, '🔶 Yellow card'],
+//   [69, '🔴 Red card'],
+//   [70, '🔁 Substitution'],
+//   [72, '🔁 Substitution'],
+//   [76, '⚽ GOAL'],
+//   [80, '⚽ GOAL'],
+//   [92, '🔶 Yellow card'],
+// ]);
+
+// //1.
+// // const events = new Set();
+// // for (const [time, eventOccured] of gameEvents) {
+// //   events.add(eventOccured);
+// // }
+
+
+// const events = [...new Set(gameEvents.values())];
+// console.log(events);
+
+// //2.
+// gameEvents.delete(64);
+// console.log(gameEvents);
+
+// //3.
+// console.log(`An event happened, on average, every ${90 / gameEvents.size} minutes.`)
+
+// //4.
+// for (const [time, eventOccured] of gameEvents) {
+//   console.log(time <= 45 ? `[FIRST HALF] ${time}: ${eventOccured}` : `[SECOND HALF] ${time}: ${eventOccured}`)
+// }
+
+
+
+// const plane = 'A320';
+
+// console.log('B737'[0]);
+// console.log(airline.length);
+// console.log('B737'.length);
+
+// console.log(airline.indexOf('r'));
+// console.log(airline.lastIndexOf('r'));
+// console.log(airline.indexOf('portugal'));
+
+// console.log(airline.slice(4)); //begin parameter
+// console.log(airline.slice(4, 7));    //4,5,6
+
+// console.log(airline.slice(0, airline.indexOf(' ')));
+// console.log(airline.slice(airline.lastIndexOf(' ') + 1));
+
+// console.log(airline.slice(-2));
+// console.log(airline.slice(1, -1));
+
+// const checkMiddleSeat = function (seat) {
+//   //b and e are middle seats
+//   const s = seat.slice(-1);
+//   if (s === 'B' || s === 'E') console.log('You got the middle seat');
+//   else console.log('you got lucky');
+// }
+
+
+// checkMiddleSeat('11B');
+// checkMiddleSeat('23C');
+// checkMiddleSeat('3E');
+
+// console.log(new String('jonas'));
+// console.log(typeof new String('jonas'));
+// const airline = "TAP Air Portugal";
+
+// console.log(airline.toLowerCase());
+// console.log(airline.toUpperCase());
+
+// //Fix capitalization in name
+// const passenger = "jOnAs"
+// const passengerLower = passenger.toLowerCase();
+// const passengerCorrect = passengerLower[0].toUpperCase() + passengerLower.slice(1);
+// console.log(passengerCorrect);
+
+// //Comparing email
+// const email = 'hello@jonas.io';
+// const loginEmail = '   Hello@Jonas.Io \n';
+
+// const lowering = function (text) {
+//   return text.toLowerCase();
+// }
+// const loweredEmail = lowering(loginEmail);
+// console.log(loweredEmail);
+
+// const trimming = function (text) {
+//   return text.trim();
+// }
+// console.log(trimming(loginEmail));
+
+// const normalizing = function (text) {
+//   return text.toLowerCase().trim();
+// }
+
+// console.log(normalizing(loginEmail));
+
+
+
+
+
+
+// //replacing
+// const priceGB = '288,97P';
+// const priceUS = priceGB.replace('P', '$').replace(',', '.');
+// console.log(priceUS)
+
+// const announcement = "All passengers come to boarding door 23. Boarding door 23!";
+// console.log(announcement.replace('door', 'gate'));
+// console.log(announcement.replace(/door/g, 'gate'));
+
+// //Booleans
+// const plane = "A320neo";
+// console.log(plane.includes('A320'));
+// console.log(plane.startsWith('A'));
+
+// console.log('a+very+nice+string'.split('+'));
+// console.log('Jonas Schmedtmann'.split(' '));
+
+// const [firstName, lastName] = 'Jonas Schmedtmann'.split(' ');
+// console.log(`Mr.`)
+
+// const newName = ['Mr.', firstName, lastName.toUpperCase()].join('');
+// console.log(newName);
+
+// const passenger = 'jessica ann smith davis'
+// const passengerArray = passenger.split(' ');
+// const capitalizing = function (people) {
+//   let capName = [];
+//   for (name of people) {
+//     capName.push(name[0].toUpperCase() + name.slice(1));
+//   }
+//   return capName.join(' ');
+// }
+// console.log(capitalizing(passengerArray));
+
+// const capitalizeName = function (name) {
+//   const names = name.split(' ');
+//   const namesUpper = [];
+
+//   for (const n of names) {
+//     namesUpper.push(n[0].toUpperCase() + n.slice(1));
+//   }
+//   console.log(namesUpper.join(' '));
+// }
+
+// capitalizeName(passenger);
+
+// //padding
+// const message = 'go to gate 23!'
+// console.log(message.padStart(25, '+').padEnd(35, '+'));
+// console.log('Jonas'.padStart(25, '+'));
+
+// const maskCreditCard = function (number) {
+//   const str = number + '';
+//   const last = str.slice(-4);
+//   return last.padStart(str.length, '*');
+// }
+
+// console.log(maskCreditCard(4337846398234723248));
+// console.log(maskCreditCard('2342341324124124124124'));
+
+// // Repeat
+// const message2 = 'Bad weather... All Departures Delayed...\n';
+// console.log(message2.repeat(5));
+
+// const planesInLine = function (n) {
+//   console.log(`There are ${n} planes in line ${'x'.repeat(n)}`);
+// }
+
+// planesInLine(5);
+// planesInLine(8);
+// planesInLine(12);
+
+
 
 // //1.looping scorers
 // // let i = 0;
@@ -148,39 +362,39 @@ const restaurant = {
 
 };
 
-const question = new Map([
-  ['question', 'what is the best programming language in the world?'],
-  [1, 'C'],
-  [2, 'Java'],
-  [3, 'Javascript'],
-  ['correct', 3],
-  [true, 'Correct!'],
-  [false, 'Try again!'],
-])
-console.log(question);
+// const question = new Map([
+//   ['question', 'what is the best programming language in the world?'],
+//   [1, 'C'],
+//   [2, 'Java'],
+//   [3, 'Javascript'],
+//   ['correct', 3],
+//   [true, 'Correct!'],
+//   [false, 'Try again!'],
+// ])
+// console.log(question);
 
-console.log(Object.entries(openingHours));
-const hoursMap = new Map(Object.entries(openingHours));
-console.log(hoursMap);
+// console.log(Object.entries(openingHours));
+// const hoursMap = new Map(Object.entries(openingHours));
+// console.log(hoursMap);
 
-console.log(question.get('question'));
-for (const [key, value] of question) {
-  if (typeof key === 'number') {
-    console.log(`answer ${key}: ${value}`);
-  }
-}
-// const answer = Number(prompt('your answer'));
+// console.log(question.get('question'));
+// for (const [key, value] of question) {
+//   if (typeof key === 'number') {
+//     console.log(`answer ${key}: ${value}`);
+//   }
+// }
+// // const answer = Number(prompt('your answer'));
 
-// const result = question.get('correct') === answer;   //result라는 변수 만들어서 쓰기
-// console.log(question.get(result));
+// // const result = question.get('correct') === answer;   //result라는 변수 만들어서 쓰기
+// // console.log(question.get(result));
 
-// console.log(question.get(question.get('correct') === answer)); //한줄에 끝내기
+// // console.log(question.get(question.get('correct') === answer)); //한줄에 끝내기
 
-//convert map to array
-console.log([...question]);
-console.log(question.entries());
-console.log(question.keys());
-console.log(question.values());
+// //convert map to array
+// console.log([...question]);
+// console.log(question.entries());
+// console.log(question.keys());
+// console.log(question.values());
 
 
 
