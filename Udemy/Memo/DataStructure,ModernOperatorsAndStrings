@@ -323,4 +323,17 @@ set은 array에서 중복을 제거하고 싶을 때 쓰면 된다.
                     staffUnique = [...new Set(staff)];//array 형태
                     console.log(staffUnique);
                     console.log(typeof staffUnique);
+//////////////////////////////////////////////////Maps
+기본 식
+const mapEx = new Map();
+구성하는 두 가지 방법이 있다.
+1)mapEx.set(key,value) 로 하나씩 채워 넣기
+2)new Map([key,value],[key2,value2]) 이런 식으로 넣기
 
+특징은 키 값으로 어떤 것도 가질 수 있다는 것이다.그런데 키 값을 reference type으로 가질 경우, 넣을 때와 get할 때
+다르다. 따라서 중간에 variable을 만들어서 사용하는 것이 좋다.
+mapEx.get(key) =value
+[...mapEx]=> array 속의 array로 반환
+mapEx.entries() 사실상 똑같음
+mapEx.keys() 키값을 객체로 반환(?)
+mapEx.values() 값들을 객체로 반환(?) mapIterator라고 쓰여있긴 한데 정확히 뭔지는 모르겠다..
