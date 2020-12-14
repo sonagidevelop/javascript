@@ -1,0 +1,101 @@
+'use strict';
+/*
+const bookings = [];
+
+const createBooking = function (
+    flightNumber,
+    numPassengers = 1,
+    price = 199 * numPassengers
+) {
+
+    //고전방식의 디폴트 설정
+    // numPassengers = numPassengers || 1;
+    // price = price || 199;
+
+
+
+    const booking = {
+        flightNumber,
+        numPassengers,
+        price
+    }
+    bookings.push(booking);
+    console.log(booking);
+
+}
+
+createBooking('LH123');
+createBooking('LH123', 2, 250);
+createBooking('LH123', 3);
+createBooking('LH123', undefined, 1000);
+*/
+/*
+const flight = 'LH234';
+const jonas = {
+    name: 'Jonas Schmedtmann',
+    passport: 24739479284
+}
+
+const checkIn = function (flightNumber, passenger) {
+    flightNumber = 'LH999';
+    passenger.name = 'Mr.' + passenger.name;
+
+    if (passenger.passport === 24739479284) {
+        alert('check in')
+    } else {
+        alert('wrong passport!')
+    }
+}
+
+checkIn(flight, jonas);
+console.log(flight);
+console.log(jonas);
+
+const newPassport = function (person) {
+    person.passport = Math.trunc(Math.random() * 1000000000);
+}
+
+newPassport(jonas);
+checkIn(flight, jonas);
+*/
+/*
+const oneWord = function (str) {
+    return str.replace(/ /g, '').toLowerCase();
+}
+
+const upperFirstWord = function (str) {
+    const [first, ...others] = str.split(' ');
+    return [first.toUpperCase(), ...others].join(' ');
+}
+
+
+//higher-order function
+const transformer = function (str, fn) {
+    console.log(`Transformed string:${fn(str)}`);
+}
+
+transformer('JavaScript is the best!', upperFirstWord);
+transformer('JavaScript is the best!', oneWord);
+
+const high5 = function () {
+    console.log('high5!');
+}
+
+document.body.addEventListener('click', high5);
+*/
+
+const greet = function (greeting) {
+    return function (name) {
+        console.log(`${greeting} ${name}`);
+    }
+}
+
+const greeterHey = greet('Hey');
+greeterHey('Jonas');
+greeterHey('Steven');
+
+greet('Hello')('Jonas');
+
+const greetArr = greeting => name => console.log(`${greeting} ${name}`);
+
+greetArr('Hi')('Jonas');
