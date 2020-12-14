@@ -24,3 +24,36 @@ addEventListener가 higher-order function, high5가 callback function.
 변수 = 1함수, 변수(인풋)=결과
   const greeterHey = greet('Hey');
   greeterHey('Jonas');
+
+
+////////////////call , apply, bind (this 의 대상을 고정하고 싶을 때)
+1)call
+book.call(eurowings,23,'Sarah Williams')
+book = 함수
+eurowings = 첫 번째 argument에 this의 대상을 넣는다.
+23,'Sarah Williams' = 두 번째 arguments 부터는 book함수의 argument로 들어가야 할 것들을 넣는다.
+
+2)apply
+call과 거의 유사한데, this의 대상 뒤의 argument로 array를 받는다
+참고로
+book.apply(swiss,flightData)
+=book.call(swiss,...flightData)
+
+3)★★★★★bind method
+bind method의 argument로 this를 고정 해 놓은 새로운 함수를 반환.
+ex) const bookEW = book.bind(eurowings);
+
+argument에 여러 개를 넣으면, 첫 번째는 this가 고정되는 대상, 두 번째 이상부터는 argument를 고정 할 수 있어진다.
+만약에 this가 없는 함수에서 argument만 고정하고 싶다면 첫 번째 argument에 null을 넣으면 된다.
+
+
+partial application
+함수를 부분적으로 쓴다.
+
+
+
+
+
+
+
+
