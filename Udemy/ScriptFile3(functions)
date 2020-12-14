@@ -83,7 +83,7 @@ const high5 = function () {
 
 document.body.addEventListener('click', high5);
 */
-
+/*
 const greet = function (greeting) {
     return function (name) {
         console.log(`${greeting} ${name}`);
@@ -99,3 +99,117 @@ greet('Hello')('Jonas');
 const greetArr = greeting => name => console.log(`${greeting} ${name}`);
 
 greetArr('Hi')('Jonas');
+*/
+/*
+const lufthansa = {
+    airline: 'Lufthansa',
+    iataCode: 'LH',
+    bookings: [],
+    book(flightNum, name) {
+        console.log(`${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`);
+        this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
+    },
+
+}
+
+lufthansa.book(239, 'Jonas Schmedtmann');
+lufthansa.book(635, 'John Smith');
+console.log(lufthansa);
+
+const eurowings = {
+    airline: 'Eurowings',
+    iataCode: 'EW',
+    bookings: [],
+
+}
+
+const book = lufthansa.book;
+
+//1.call method
+book.call(eurowings, 23, 'Sarah Williams');
+book.call(lufthansa, 239, "jin hyeok choi");
+console.log(eurowings.bookings);
+console.log(lufthansa.bookings);
+
+const swiss = {
+    airline: "Swiss Airline",
+    iataCode: 'LX',
+    bookings: [],
+}
+
+book.call(swiss, 263, "doggy choi");
+
+//2.apply method
+const flightData = [583, 'George Cooper'];
+book.apply(swiss, flightData);
+
+book.call(swiss, ...flightData);
+
+//3.bind method
+
+const bookEW = book.bind(eurowings);
+const bookLH = book.bind(lufthansa);
+const bookLX = book.bind(swiss);
+
+bookEW(67, 'Steven Williams');
+bookLX(235, 'whiwhiaw');
+
+const bookEW23 = book.bind(eurowings, 23);
+bookEW23('heo chul ho');
+
+//bind with Event Listeners
+lufthansa.planes = 300;
+lufthansa.buyPlane = function () {
+    this.planes++
+    console.log(this.planes);
+}
+const buyPlane = lufthansa.buyPlane;
+const buyPlaneLH = buyPlane.bind(lufthansa);
+document.querySelector('.buy').addEventListener('click', buyPlaneLH);
+
+//Partial application
+const addVAT = function (rate) {
+    return function (value) {
+        console.log(value = value + value * rate);
+    }
+}
+
+const addTAX = addVAT(0.23);
+addTAX(200);
+
+const addTaxRate = function (rate) {
+    return function (value) {
+        return value + value * rate;
+    }
+}
+const addVAT2 = addTaxRate(0.23);
+console.log(addVAT2(100));
+*/
+
+
+//Coding Challenge
+
+const poll = {
+    question: "What is your favourite programming language?",
+    options: ["0: JavaScript", "1: Python", "2: Rust", "3:C++"],
+    // This generates [0, 0, 0, 0]. More in the next section!
+    answers: new Array(4).fill(0),
+
+    registerNewAnswer: function () {
+        const answer = Number(prompt(`What is your favourite programming language?\n0: Javascript\n1:Python\n2:Rust\n3:C++`));
+        if (answer >= 0 && answer <= 3) {
+            this.answers[answer]++
+        }
+
+        this.displayResults('string');
+    },
+
+    displayResults: function (type) {
+        type == 'array' ? console.log(this.answers) : console.log(`Poll results are ${this.answers.join(',')}`)
+    },
+
+
+};
+
+const pollReg = poll.registerNewAnswer.bind(poll);
+document.querySelector('.poll').addEventListener('click', pollReg);
