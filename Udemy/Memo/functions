@@ -1,0 +1,26 @@
+//////default parameter
+함수 선언시에 parameter=default 하면 됨.
+const booking=function(flightNum,passenger=3,price=200)
+
+////////arguments
+argument가 primitive일때, creating a copy 따라서 원래 자료 값 변경 x
+그러나 reference type일 경우, heap 메모리 안의 것을 건듦. 따라서 자료 값이 변경됨.
+그래서 하나의 객체, 변수 등을 argument'로 받아 쓰는 함수가 여러 개라면 주의해야 한다.
+
+//////first-class and higher-order functions
+first-class function은 value.
+higher-order function은 function을 받거나(이런 걸 callback function이라고 함.) function을
+return함.
+functions are objects. Methods are available.
+
+
+///////////Callback Functions
+업무분산.
+ex) addEventListener('click',high5)
+addEventListener가 higher-order function, high5가 callback function.
+
+/////////////function returning function
+1함수가 2함수를 리턴함.
+변수 = 1함수, 변수(인풋)=결과
+  const greeterHey = greet('Hey');
+  greeterHey('Jonas');
