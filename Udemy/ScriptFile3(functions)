@@ -188,28 +188,121 @@ console.log(addVAT2(100));
 
 
 //Coding Challenge
-
+/*
 const poll = {
     question: "What is your favourite programming language?",
     options: ["0: JavaScript", "1: Python", "2: Rust", "3:C++"],
     // This generates [0, 0, 0, 0]. More in the next section!
     answers: new Array(4).fill(0),
 
-    registerNewAnswer: function () {
-        const answer = Number(prompt(`What is your favourite programming language?\n0: Javascript\n1:Python\n2:Rust\n3:C++`));
-        if (answer >= 0 && answer <= 3) {
-            this.answers[answer]++
-        }
 
-        this.displayResults('string');
-    },
+    registerNewAnswer() {
+        const answer = Number(
+            prompt(
+                `${this.question}\n${this.options.join('\n')}\n(Write option number)`
+            )
+        );
+        console.log(answer);
 
-    displayResults: function (type) {
-        type == 'array' ? console.log(this.answers) : console.log(`Poll results are ${this.answers.join(',')}`)
-    },
+        typeof answer === 'number' && answer < this.answers.length && this.answers[answer]++;
+    }
+
+
+
+
+
+
+    // registerNewAnswer: function () {
+    //     const answer = Number(prompt(`What is your favourite programming language?\n0: Javascript\n1:Python\n2:Rust\n3:C++`));
+    //     if (answer >= 0 && answer <= 3) {
+    //         this.answers[answer]++
+    //     }
+
+    //     this.displayResults('string');
+    // },
+
+    // displayResults: function (type) {
+    //     type == 'array' ? console.log(this.answers) : console.log(`Poll results are ${this.answers.join(',')}`)
+    // },
 
 
 };
 
 const pollReg = poll.registerNewAnswer.bind(poll);
 document.querySelector('.poll').addEventListener('click', pollReg);
+*/
+/*
+const runOnce = function () {
+    console.log('This will never run again');
+}
+
+runOnce();
+
+(function () {
+    console.log('this will never run agian');
+    const isPrivate = 23;
+})();
+// console.log(isPrivate);
+(() => console.log('this will never run agian'))();
+
+{
+    const isPrivate=23;
+}
+*/
+/*
+const secureBooking = function () {
+    let passengerCount = 0;
+    return function () {
+        passengerCount++;
+        console.log(`${passengerCount} passengers`);
+    }
+};
+
+const booker = secureBooking();
+booker();
+booker();
+booker();
+
+console.dir(booker);
+*/
+/*
+let f;
+
+const g = function () {
+    const a = 23;
+    f = function () {
+        console.log(a * 2);
+    }
+}
+
+const h = function () {
+    const b = 777;
+    f = function () {
+        console.log(b * 2);
+    }
+}
+
+g();
+f();
+console.dir(f);
+//reassigning f function
+h();
+f();
+console.dir(f);
+
+//Example2
+const boardPassengers = function (n, wait) {
+    const perGroup = n / 3;
+
+    setTimeout(function () {
+        console.log(`We are now boarding all ${n} passengers`)
+        console.log(`There are 3 groups, each with ${perGroup} passengers`);
+    }, wait * 1000);
+
+
+    console.log(`Will start boarding in ${wait}seconds.`);
+}
+
+const perGroup = 1000;
+boardPassengers(180, 3)
+*/
