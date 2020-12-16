@@ -51,6 +51,67 @@ partial application
 함수를 부분적으로 쓴다.
 
 
+///////closures
+
+      /*
+      const secureBooking = function () {
+          let passengerCount = 0;
+
+          return function () {
+              passengerCount++;
+              console.log(`${passengerCount} passengers.`);
+          }
+      }
+
+      const booker = secureBooking();
+
+      booker();
+      booker();
+      booker();
+      */
+
+      let f;
+
+      const g = function () {
+          const a = 23;
+          f = function () {
+              console.log(a * 2);
+          }
+      };
+
+      const h = function () {
+          const b = 777;
+          f = function () {
+              console.log(b * 2);
+          }
+      }
+
+
+      g();  //f에다가 함수를 할당함
+
+      f();  //a를 어디서 찾나? -closure에서 찾는다.
+
+      h();  //f에다가 새로운 함수를 할당
+
+      f();  //b를 어디서 찾나? -closure에서 찾는다.
+
+      //example2
+      const boardPassengers = function (n, wait) {
+          const perGroup = n / 3;
+
+          setTimeout(function () {
+              console.log(`We are now boarding all ${n} passengers`)
+              console.log(`There are 3 groups, each with ${perGroup} passengers`)
+          }, wait * 1000);
+
+          console.log(`Will start boarding in ${wait} seconds.`)
+      }
+
+      const perGroup = 1000;     //global scope variable보다 closure의 variable이 우위를 갖는다.
+      boardPassengers(180, 3);
+
+      //setTimeout함수의 callback function인 콘솔 로그 부분은 boardPassengers와 immediately
+      //실행 됐다. 그럼에도 불구하고 n 과 perGroup 변수를 받을 수 있었던 것은 closure덕분이다.
 
 
 
