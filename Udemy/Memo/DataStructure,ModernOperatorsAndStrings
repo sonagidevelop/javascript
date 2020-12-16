@@ -91,7 +91,31 @@ const [p = 1, q = 1, r = 1] = [8, 9];
 
 
 
+//////////////추가공부
+//Destructuring Objects
 
+//추출한 요소의 이름을 변수 명으로 할 때
+const { name, openingHours, categories } = restaurant;
+
+//추출 요소와 이름을 다르게 하고 싶을 때
+const { name: restaurantName, openingHours: hours, categories: tags } = restaurant;
+
+//default 값 정하기
+const { menu = [], starterMenu: starters = [] } = restaurant;
+
+//mutating variables
+let a = 111;
+let b = 999;
+const obj = { a: 23, b: 7, c: 14 };
+
+({ a, b } =obj);
+
+//nested objects
+const {fri} = openingHours;
+const {fri:{open,close}}=openingHours;
+
+//nested objects + variable naming
+const {fri:{open:openTime,close:closeTime}}=openingHours;
 
 
 
