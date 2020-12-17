@@ -61,20 +61,80 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
+const displayMovements = function (movements) {
+  containerMovements.innerHTML = ''
+
+  movements.forEach(function (mov, i) {
+
+    const type = mov > 0 ? 'deposit' : 'withdrawal'
+
+    const html = `
+      <div class="movements__row">
+        <div class="movements__type movements__type--${type}">${i + 1} ${type}</div>
+        <div class="movements__value">${mov}</div>
+      </div>`;
+
+    containerMovements.insertAdjacentHTML('afterbegin', html)
+
+
+
+  })
+}
+displayMovements(account1.movements)
+
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((acc, cur) => acc += cur, 0);
+  labelBalance.textContent = `${balance}€`
+}
+calcDisplayBalance(account1.movements);
+
+const calcDisplaySummary = function (movements) {
+  const income = movements.filter(mov => mov > 0).reduce((acc, cur) => acc += cur)
+  const outcome = movements.filter(mov => mov < 0).reduce((acc, cur) => acc += cur)
+  labelSumIn.textContent = `${income}€`
+  labelSumOut.textContent = `${Math.abs(outcome)}€`
+}
+calcDisplaySummary(account1.movements);
+const createUsernames = function (accs) {
+  accs.forEach(function (acc) {
+    acc.username = acc.owner.toLowerCase().split(' ').map(name => name[0]).join('');
+    console.log(acc.username);
+  })
+
+}
+createUsernames(accounts);
+
+
+//////filter
+/*
+const deposits = account1.movements.filter(function (mov) {
+  return mov > 0;
+})
+
+const depositsFor = [];
+for (const mov of account1.movements) if (mov > 0) depositsFor.push(mov);
+console.log(depositsFor)
+
+const withdrawals = account1.movements.filter(mov => mov < 0);
+console.log(withdrawals);
+*/
+
+
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
 
-const currencies = new Map([
-  ['USD', 'United States dollar'],
-  ['EUR', 'Euro'],
-  ['GBP', 'Pound sterling'],
-]);
+// const currencies = new Map([
+//   ['USD', 'United States dollar'],
+//   ['EUR', 'Euro'],
+//   ['GBP', 'Pound sterling'],
+// ]);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
-
+/*
 let arr = ['a', 'b', 'c', 'd', 'e'];
 
 //slice
@@ -85,7 +145,7 @@ console.log(
   arr.slice(1, -2),
   arr.slice() //shallow copy를 얻을 수도 있다.
 )
-
+*/
 //splice
 /*
 console.log(
@@ -94,7 +154,7 @@ console.log(
 
 );
 */
-
+/*
 //reverse
 const arr2 = ['j', 'i', 'h', 'g', 'f'];
 console.log(arr2.reverse());
@@ -107,3 +167,136 @@ console.log([...arr, ...arr2]);   //concat과 같은 결과
 
 //Join
 console.log(letters.join('-'));
+
+
+//////////////////////////////////////////
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+/////for of
+// for (const movement of movements) {
+for (const [i, movement] of movements.entries()) {    //counting 을 하고 싶을때, entries() 이용
+  if (movement > 0) {
+    console.log(`Movement ${i + 1}:you deposited ${movement}`);
+  } else {
+    console.log(`Movement ${i + 1}:you withdrew ${Math.abs(movement)}`)
+  }
+}
+
+///////forEach
+console.log('--------For Each----------')
+movements.forEach(function (mov, i, arr) {
+  if (mov > 0) {
+    console.log(`Movement ${i + 1}:you deposited ${mov}`);
+  } else {
+    console.log(`Movement ${i + 1}:you withdrew ${Math.abs(mov)}`)
+  }
+})
+
+
+////////////////////////////
+///map
+const currencies = new Map([
+  ['USD', 'United States dollar'],
+  ['EUR', 'Euro'],
+  ['GBP', 'Pound sterling'],
+]);
+
+currencies.forEach(function (value, key, map) {
+  console.log(`${key}:${value}`)
+})
+
+//set
+const currenciesUnique = new Set(['USD', 'GBP', 'USD', 'EUR', 'EUR']);
+currenciesUnique.forEach(function (value, _, set) {
+  console.log(`${value}`)
+})
+*/
+
+
+//coding challenge
+/*
+const dogsJulia = [9, 16, 6, 8, 3];
+const dogsKate = [10, 5, 6, 1, 4];
+
+const checkDogs = function (arr1, arr2) {
+  const newArr1 = arr1.slice(1, 3);
+  const mergedArr = [...newArr1, ...arr2];
+  mergedArr.forEach(function (dog, i) {
+    const judge = Number(dog) >= 3 ? ` is an adult, and is ${dog} years old` : ' is still a puppy'
+
+    console.log(`Dog number ${i + 1}` + judge);
+  })
+
+}
+
+checkDogs(dogsJulia, dogsKate);
+*/
+/*
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const eurToUsd = 1.1;
+
+// const exchanged = movements.map(function(mov){
+//   return mov * eurToUsd;
+// })
+
+const exchanged = movements.map(mov => mov * eurToUsd)
+console.log(exchanged);
+
+//map 안 쓰고 똑같이 하기
+const movementsUSDfor = [];
+for (const mov of movements) movementsUSDfor.push(mov * eurToUsd);
+console.log(movementsUSDfor);
+
+//forEach와 map으로 같은 기능을 구현 할 수 있다.
+const movementsDescription = movements.map((mov, i) => {
+  //화살표 함수 + 삼항 연산자 + map
+  return `Movement ${i + 1}:you ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(mov)}`;
+
+
+
+  // if (mov > 0) {
+  //   `Movement ${i + 1}:you ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(mov)}`;
+  //   return `Movement ${i + 1}:you deposited ${mov}`;
+  // } else {
+  //   return `Movement ${i + 1}:you withdrew ${Math.abs(mov)}`;
+  // }
+})
+
+console.log(movementsDescription)
+*/
+
+//accumulator -> snowball
+// const balance = account1.movements.reduce(function (acc, cur, i, arr) {
+//   console.log(`Iteration number ${i}:${acc}`);
+//   return acc + cur
+// }, 0)
+// console.log(balance);
+
+/*
+const balance = account1.movements.reduce((acc, cur) => acc += cur, 0)
+console.log(balance);
+
+let balance2 = 0;
+for (const mov of account1.movements) balance2 += mov;
+console.log(balance2);
+*/
+/*
+//Maximum value 
+const findMax = account2.movements.reduce((max, cur) => max < cur ? max = cur : max = max);
+console.log(findMax);
+*/
+/*
+const calcAverageHumanAge = function (arr) {
+  const humanAge = arr.map(age => age > 2 ? 16 + age * 4 : 2 * age)
+  const adultDogs = humanAge.filter(function (age) { return age >= 18 })
+  const aveAdultDogs = adultDogs.reduce((acc, cur) => acc += cur) / adultDogs.length
+
+  return aveAdultDogs
+}
+
+console.log(calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]));
+*/
+
+
+const giral = Math.trunc(account1.movements.filter(mov => mov > 0).map(mov => mov * 1.1).reduce((acc, cur) => acc += cur))
+console.log(giral);
