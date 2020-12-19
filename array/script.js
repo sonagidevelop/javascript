@@ -61,10 +61,12 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
-const displayMovements = function (movements) {
+const displayMovements = function (movements, sort = false) {
   containerMovements.innerHTML = ''
 
-  movements.forEach(function (mov, i) {
+  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements
+
+  movs.forEach(function (mov, i) {
 
     const type = mov > 0 ? 'deposit' : 'withdrawal'
 
@@ -99,7 +101,6 @@ const calcDisplaySummary = function (acc) {
 const createUsernames = function (accs) {
   accs.forEach(function (acc) {
     acc.username = acc.owner.toLowerCase().split(' ').map(name => name[0]).join('');
-    console.log(acc.username);
   })
 
 }
@@ -169,18 +170,41 @@ btnTransfer.addEventListener('click', function (e) {
   }
 })
 
-//account closing implement
-btnClose.addEventListener('click', function (e) {
+//loan implementing
+btnLoan.addEventListener('click', function (e) {
   e.preventDefault();
-  const closeIndex = accounts.
-    findIndex(inputCloseUsername === accounts.username)
-  if (inputClosePin === accounts[closeIndex].pin) {
-    accounts[closeIndex] = '';
+  const amount = Number(inputLoanAmount.value);
+
+  if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
+    currentAccount.movements.push(amount);
     updateUI(currentAccount);
   }
+  inputLoanAmount.value = '';
+
 })
 
 
+
+//account closing implement
+btnClose.addEventListener('click', function (e) {
+  e.preventDefault();
+
+  if (inputCloseUsername.value == currentAccount.username &&
+    Number(inputClosePin.value) == currentAccount.pin) {
+    const index = accounts.findIndex(acc => acc.username === currentAccount.username);
+    accounts.splice(index, 1);
+    containerApp.style.opacity = 0;
+  }
+
+  inputClosePin.value = inputCloseUsername.value = '';
+})
+
+let sorted = false
+btnSort.addEventListener('click', function (e) {
+  e.preventDefault();
+  displayMovements(currentAccount.movements, !sorted);
+  sorted = !sorted;
+})
 
 
 
@@ -410,3 +434,78 @@ for (const acc of accounts) {
 
 console.log(accountMatch)
 */
+/*
+//include
+console.log(account1.movements);
+console.log(account1.movements.includes(-130));
+
+//some
+const anyDeposits = account2.movements.some(mov => mov > 5000)
+console.log(anyDeposits);
+
+//every
+console.log(account4.movements.every(mov => mov > 0));
+
+//Seperate callback
+const deposit = mov => mov > 0
+console.log(account4.movements.every(deposit));
+*/
+/*
+const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
+console.log(arr.flat());
+
+const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8];
+console.log(arrDeep.flat(2));
+
+// const accountMovements = accounts.map(acc => acc.movements);
+// const allMovements = accountMovements.flat();
+// const overallBalance = allMovements.reduce((acc, cur) => acc += cur, 0);
+// console.log(overallBalance);
+
+const overallBalance = accounts
+  .map(acc => acc.movements)
+  .flat()
+  .reduce((acc, cur) => acc += cur, 0);
+console.log(overallBalance)
+
+const overallBalance2 = accounts
+  .flatMap(acc => acc.movements)
+  .reduce((acc, cur) => acc += cur, 0);
+console.log(overallBalance2)
+*/
+/*
+const owners = ['Jonas', 'Zach', 'Adam', 'Martha'];
+console.log(owners.sort());
+
+console.log(account1.movements);
+
+//return < 0 , a,b (keep order)
+//return > 0 , b,a (switch order)
+
+account1.movements.sort((a, b) => b - a);
+console.log(account1.movements)
+*/
+const arr = [1, 2, 3, 4, 5, 6, 7]
+const x = new Array(7);
+// x.fill(1);
+x.fill(8, 3, 5);
+console.log(x);
+
+arr.fill(8);
+console.log(arr);
+
+//Array.from
+Array.from({ length: 7 }, () => 1);
+
+const z = Array.from({ length: 7 }, (_, i) => i + 1);
+console.log(z);
+
+const randomDiceRoll = Array.from({ length: 100 }, () => Math.trunc(Math.random() * 6) + 1)
+console.log(randomDiceRoll);
+
+
+///////////집중이안돼!!
+labelBalance.addEventListener('click', function () {
+  const movementsUI = Array.from(document.querySelectorAll('.movements__value'));
+
+})
